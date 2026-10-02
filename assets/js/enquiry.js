@@ -2,7 +2,7 @@
   const SERVICES = {
     laundry: [
       'Wash, dry and fold','Washing','Drying','Ironing','Folding','Stain removal',
-      'Dry cleaning','Duvets / duvet covers','Carpets / curtains','Mattresses','Shoe cleaning','Not sure'
+      'Dry cleaning','Duvets / duvet covers','Carpets / curtains','Mattresses','Shoe cleaning','Pickup & delivery','Not sure'
     ],
     cleaning: [
       'Sofa cleaning','Dining-chair cleaning','Deep-house cleaning','Office cleaning',
@@ -69,6 +69,22 @@
             <span class="form-error" data-error-for="neighbourhood"></span>
           </div>
 
+          <div class="form-field" id="quantity-field" hidden>
+            <label for="enquiry-quantity">Approximate quantity <span aria-hidden="true">(optional)</span></label>
+            <input id="enquiry-quantity" name="quantity" type="number" min="1" step="1" inputmode="numeric" placeholder="e.g. 2">
+            <span class="form-error" data-error-for="quantity"></span>
+          </div>
+
+          <div class="form-field" id="property-field" hidden>
+            <label for="enquiry-property">Property type</label>
+            <select id="enquiry-property" name="property">
+              <option value="">Not sure / not applicable</option>
+              <option>Home</option>
+              <option>Office</option>
+              <option>Other</option>
+            </select>
+          </div>
+
           <div class="form-field full">
             <label for="enquiry-description">Items or job details</label>
             <textarea id="enquiry-description" name="description" minlength="10" maxlength="600" required placeholder="Tell us what needs cleaning, approximate quantity/size, or what pest concern you have."></textarea>
@@ -80,17 +96,9 @@
             <input id="enquiry-date" name="date" type="date">
             <span class="form-error" data-error-for="date"></span>
           </div>
-
-          <div class="form-field">
-            <label for="enquiry-property">Property type <span aria-hidden="true">(if relevant)</span></label>
-            <select id="enquiry-property" name="property">
-              <option value="">Not applicable / not sure</option>
-              <option>Home</option>
-              <option>Office</option>
-              <option>Other</option>
-            </select>
-          </div>
         </div>
+
+        <p class="form-context" id="enquiry-context" aria-live="polite"></p>
 
         <div class="modal-actions">
           <button class="btn btn-primary" type="submit">Review message</button>
@@ -100,7 +108,8 @@
 
       <div id="enquiry-review" hidden>
         <h3>Review your message</h3>
-        <div class="review-box" id="enquiry-message"></div>
+        <p>You can edit the form or copy this message before opening WhatsApp.</p>
+        <div class="review-box" id="enquiry-message" tabindex="0"></div>
         <div class="modal-actions">
           <button class="btn btn-secondary" type="button" id="edit-enquiry">Edit</button>
           <button class="btn btn-secondary" type="button" id="copy-enquiry">Copy message</button>
@@ -122,39 +131,82 @@
   const description = modal.querySelector('#enquiry-description');
   const date = modal.querySelector('#enquiry-date');
   const name = modal.querySelector('#enquiry-name');
+  const quantity = modal.querySelector('#enquiry-quantity');
+  const quantityField = modal.querySelector('#quantity-field');
   const property = modal.querySelector('#enquiry-property');
+  const propertyField = modal.querySelector('#property-field');
+  const context = modal.querySelector('#enquiry-context');
   const messageBox = modal.querySelector('#enquiry-message');
   const continueLink = modal.querySelector('#continue-whatsapp');
   const copyStatus = modal.querySelector('#copy-status');
-  const firstFocusable = modal.querySelector('.enquiry-close');
   let lastTrigger = null;
-  let focusAreaOnOpen = false;
 
-  const today = new Date();
-  const localToday = new Date(today.getTime() - today.getTimezoneOffset()*60000).toISOString().slice(0,10);
-  date.min = localToday;
+  function nairobiToday() {
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Africa/Nairobi',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).formatToParts(new Date());
 
-  function renderServices(selected='') {
+    const values = Object.fromEntries(parts.filter(p => p.type !== 'literal').map(p => [p.type, p.value]));
+    return `${values.year}-${values.month}-${values.day}`;
+  }
+
+  const today = nairobiToday();
+  date.min = today;
+
+  function renderServices(selected = '') {
     const options = category.value ? SERVICES[category.value] : [];
     service.innerHTML = '<option value="">Choose a service</option>' +
-      options.map(item => `<option${item===selected?' selected':''}>${item}</option>`).join('');
+      options.map(item => `<option${item === selected ? ' selected' : ''}>${item}</option>`).join('');
+  }
+
+  function updateConditionalFields(announce = false) {
+    const type = category.value;
+    const showQuantity = type === 'laundry' || type === 'cleaning';
+    const showProperty = type === 'cleaning' || type === 'fumigation';
+
+    quantityField.hidden = !showQuantity;
+    propertyField.hidden = !showProperty;
+
+    if (!showQuantity) quantity.value = '';
+    if (!showProperty) property.value = '';
+
+    if (type === 'laundry') {
+      description.placeholder = 'Describe the items, care concerns and anything useful about pickup.';
+    } else if (type === 'cleaning') {
+      description.placeholder = 'Describe the rooms, furniture, carpet area or cleaning scope.';
+    } else if (type === 'fumigation') {
+      description.placeholder = 'Describe the pest concern, affected areas or what you are seeing.';
+    } else {
+      description.placeholder = 'Tell us what needs cleaning, approximate quantity/size, or what pest concern you have.';
+    }
+
+    if (announce && type) {
+      context.textContent = 'The fields have been adjusted for this service category.';
+    } else {
+      context.textContent = '';
+    }
   }
 
   function openModal(trigger) {
     lastTrigger = trigger;
-    focusAreaOnOpen = trigger?.dataset.focusArea === 'true';
+    const focusAreaOnOpen = trigger?.dataset.focusArea === 'true';
     const selectedCategory = trigger?.dataset.category || '';
     const selectedService = trigger?.dataset.service || '';
 
     if (selectedCategory) category.value = selectedCategory;
     renderServices(selectedService);
+    updateConditionalFields(false);
 
     review.hidden = true;
     form.hidden = false;
+    copyStatus.textContent = '';
     modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden','false');
+    modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
-    document.querySelector('.mobile-action-bar')?.setAttribute('hidden','');
+    document.querySelector('.mobile-action-bar')?.setAttribute('hidden', '');
 
     setTimeout(() => {
       if (focusAreaOnOpen) area.focus();
@@ -165,13 +217,16 @@
 
   function closeModal() {
     modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden','true');
+    modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
     document.querySelector('.mobile-action-bar')?.removeAttribute('hidden');
     lastTrigger?.focus();
   }
 
-  category.addEventListener('change', () => renderServices());
+  category.addEventListener('change', () => {
+    renderServices();
+    updateConditionalFields(true);
+  });
 
   document.addEventListener('click', (event) => {
     const trigger = event.target.closest('[data-enquiry]');
@@ -185,14 +240,19 @@
 
   modal.querySelector('.enquiry-dialog').addEventListener('keydown', (event) => {
     if (event.key !== 'Tab') return;
-    const focusable = [...modal.querySelectorAll('button:not([disabled]),a[href],input,select,textarea')].filter(el => !el.hidden && el.offsetParent !== null);
+    const focusable = [...modal.querySelectorAll('button:not([disabled]),a[href],input,select,textarea,[tabindex="0"]')]
+      .filter(el => !el.hidden && el.offsetParent !== null);
+
     if (!focusable.length) return;
     const first = focusable[0];
-    const last = focusable[focusable.length-1];
+    const last = focusable[focusable.length - 1];
+
     if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault(); last.focus();
+      event.preventDefault();
+      last.focus();
     } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault(); first.focus();
+      event.preventDefault();
+      first.focus();
     }
   });
 
@@ -203,57 +263,80 @@
 
   function validate() {
     let ok = true;
-    ['category','service','area','description','date','name','neighbourhood'].forEach(key => setError(key,''));
+    ['category', 'service', 'area', 'description', 'date', 'name', 'neighbourhood', 'quantity']
+      .forEach(key => setError(key, ''));
 
-    if (!category.value) { setError('category','Choose a category.'); ok=false; }
-    if (!service.value) { setError('service','Choose a service or “Not sure”.'); ok=false; }
-    if (!area.value) { setError('area','Choose an area.'); ok=false; }
+    if (!category.value) { setError('category', 'Choose a category.'); ok = false; }
+    if (!service.value) { setError('service', 'Choose a service or “Not sure”.'); ok = false; }
+    if (!area.value) { setError('area', 'Choose an area.'); ok = false; }
 
     const desc = description.value.trim();
-    if (!desc) { setError('description','Tell us briefly what you need.'); ok=false; }
-    else if (desc.length < 10) { setError('description','Please add a little more detail (at least 10 characters).'); ok=false; }
-    else if (desc.length > 600) { setError('description','Keep the description within 600 characters.'); ok=false; }
+    if (!desc) { setError('description', 'Tell us briefly what you need.'); ok = false; }
+    else if (desc.length < 10) { setError('description', 'Please add a little more detail (at least 10 characters).'); ok = false; }
+    else if (desc.length > 600) { setError('description', 'Keep the description within 600 characters.'); ok = false; }
 
-    if (name.value.trim().length > 80) { setError('name','Keep the name within 80 characters.'); ok=false; }
-    if (neighbourhood.value.trim().length > 120) { setError('neighbourhood','Keep the neighbourhood within 120 characters.'); ok=false; }
+    if (name.value.trim().length > 80) { setError('name', 'Keep the name within 80 characters.'); ok = false; }
+    if (neighbourhood.value.trim().length > 120) { setError('neighbourhood', 'Keep the neighbourhood within 120 characters.'); ok = false; }
 
-    if (date.value && date.value < localToday) { setError('date','Choose today or a future date.'); ok=false; }
+    if (!quantityField.hidden && quantity.value) {
+      const qty = Number(quantity.value);
+      if (!Number.isInteger(qty) || qty < 1) {
+        setError('quantity', 'Use a positive whole number.');
+        ok = false;
+      }
+    }
+
+    if (date.value && date.value < today) {
+      setError('date', 'Choose today or a future date.');
+      ok = false;
+    }
+
     return ok;
   }
 
   function buildMessage() {
-    const areaLine = neighbourhood.value.trim() ? `${area.value} - ${neighbourhood.value.trim()}` : area.value;
+    const areaLine = neighbourhood.value.trim()
+      ? `${area.value} - ${neighbourhood.value.trim()}`
+      : area.value;
+
     const lines = [
       'Hello Clean Bubbles, I would like a quote.',
       `Service: ${category.options[category.selectedIndex].text} - ${service.value}`
     ];
+
     if (name.value.trim()) lines.push(`Name: ${name.value.trim()}`);
     lines.push(`Area: ${areaLine}`);
-    if (property.value) lines.push(`Property: ${property.value}`);
+    if (!quantityField.hidden && quantity.value) lines.push(`Approx. quantity: ${quantity.value}`);
+    if (!propertyField.hidden && property.value) lines.push(`Property: ${property.value}`);
     lines.push(`Items or job: ${description.value.trim()}`);
     if (date.value) lines.push(`Preferred date: ${date.value}`);
     lines.push('Please confirm availability, price and pickup or service arrangements.');
+
     return lines.join('\n');
   }
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
+
     if (!validate()) {
       const errorField = modal.querySelector('.form-error:not(:empty)');
       errorField?.closest('.form-field')?.querySelector('input,select,textarea')?.focus();
       return;
     }
+
     const message = buildMessage();
+
     if (message.length > 1400) {
-      setError('description','The prepared WhatsApp message is too long. Shorten the job description.');
+      setError('description', 'The prepared WhatsApp message is too long. Shorten the job description.');
       description.focus();
       return;
     }
+
     messageBox.textContent = message;
     continueLink.href = `https://wa.me/254723791323?text=${encodeURIComponent(message)}`;
     form.hidden = true;
     review.hidden = false;
-    review.querySelector('h3').focus?.();
+    messageBox.focus();
   });
 
   modal.querySelector('#edit-enquiry').addEventListener('click', () => {
@@ -264,6 +347,7 @@
 
   modal.querySelector('#copy-enquiry').addEventListener('click', async () => {
     const text = messageBox.textContent;
+
     try {
       await navigator.clipboard.writeText(text);
       copyStatus.textContent = 'Message copied.';
@@ -271,6 +355,4 @@
       copyStatus.textContent = 'Copy did not work. Select the message above and copy it manually.';
     }
   });
-
-  if (!document.querySelector('[data-enquiry]')) firstFocusable?.focus();
 })();
