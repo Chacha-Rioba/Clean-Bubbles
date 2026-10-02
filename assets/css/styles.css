@@ -460,3 +460,33 @@ h3{font-size:clamp(1.7rem,3.1vw,2.7rem);color:var(--navy);font-weight:900}
   .logo-lockup img{height:42px;max-width:175px}
   .nav-whatsapp{display:none}
 }
+
+/* WhatsApp CTA rendering fix */
+.primary-nav>a.nav-whatsapp{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  padding:11px 16px!important;
+  min-height:44px!important;
+  border-radius:999px!important;
+  background:#25D366!important;
+  color:#fff!important;
+  font-weight:900!important;
+  box-shadow:0 10px 22px rgba(37,211,102,.22)!important;
+}
+.primary-nav>a.nav-whatsapp:hover{background:#1ebe5d!important;color:#fff!important}
+.btn-whatsapp{
+  background:#25D366!important;
+  color:#fff!important;
+  border:0!important;
+  box-shadow:0 12px 28px rgba(37,211,102,.22)!important;
+}
+.btn-whatsapp:hover{background:#1ebe5d!important;color:#fff!important}
+.btn-whatsapp:before,.primary-nav>a.nav-whatsapp:before{
+  content:"";
+  width:18px;height:18px;display:inline-block;flex:0 0 18px;
+  border:2px solid currentColor;border-radius:50%;
+  box-shadow:inset -3px -3px 0 -1px currentColor;
+}
+.logo-lockup img{background:#fff;border-radius:10px}
