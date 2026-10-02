@@ -65,8 +65,14 @@
 
           <div class="form-field full">
             <label for="enquiry-neighbourhood">Neighbourhood / locality</label>
-            <input id="enquiry-neighbourhood" name="neighbourhood" maxlength="120" placeholder="e.g. Thika town, Ruiru, Juja">
+            <input id="enquiry-neighbourhood" name="neighbourhood" maxlength="120" placeholder="e.g. Section 9, Ruiru, Juja">
             <span class="form-error" data-error-for="neighbourhood"></span>
+          </div>
+
+          <div class="form-field full">
+            <label for="enquiry-building">Apartment / Building Name <span aria-hidden="true">(optional)</span></label>
+            <input id="enquiry-building" name="building" maxlength="120" placeholder="e.g. Greenview Apartments, Block B">
+            <span class="form-error" data-error-for="building"></span>
           </div>
 
           <div class="form-field" id="quantity-field" hidden>
@@ -128,6 +134,7 @@
   const service = modal.querySelector('#enquiry-service');
   const area = modal.querySelector('#enquiry-area');
   const neighbourhood = modal.querySelector('#enquiry-neighbourhood');
+  const building = modal.querySelector('#enquiry-building');
   const description = modal.querySelector('#enquiry-description');
   const date = modal.querySelector('#enquiry-date');
   const name = modal.querySelector('#enquiry-name');
@@ -263,7 +270,7 @@
 
   function validate() {
     let ok = true;
-    ['category', 'service', 'area', 'description', 'date', 'name', 'neighbourhood', 'quantity']
+    ['category', 'service', 'area', 'description', 'date', 'name', 'neighbourhood', 'building', 'quantity']
       .forEach(key => setError(key, ''));
 
     if (!category.value) { setError('category', 'Choose a category.'); ok = false; }
@@ -277,6 +284,7 @@
 
     if (name.value.trim().length > 80) { setError('name', 'Keep the name within 80 characters.'); ok = false; }
     if (neighbourhood.value.trim().length > 120) { setError('neighbourhood', 'Keep the neighbourhood within 120 characters.'); ok = false; }
+    if (building.value.trim().length > 120) { setError('building', 'Keep the apartment/building name within 120 characters.'); ok = false; }
 
     if (!quantityField.hidden && quantity.value) {
       const qty = Number(quantity.value);
@@ -306,6 +314,7 @@
 
     if (name.value.trim()) lines.push(`Name: ${name.value.trim()}`);
     lines.push(`Area: ${areaLine}`);
+    if (building.value.trim()) lines.push(`Apartment/Building: ${building.value.trim()}`);
     if (!quantityField.hidden && quantity.value) lines.push(`Approx. quantity: ${quantity.value}`);
     if (!propertyField.hidden && property.value) lines.push(`Property: ${property.value}`);
     lines.push(`Items or job: ${description.value.trim()}`);
