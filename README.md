@@ -1,23 +1,32 @@
 # Clean Bubbles Website
 
-Customer-facing website for **Clean Bubbles — Laundry, Cleaning & Fumigation Services**.
+Premium customer-facing website for **Clean Bubbles — Laundry, Cleaning & Fumigation Services**.
 
 ## Current build
 
-The first release includes:
+The website now includes:
 
-- Homepage with premium responsive hero and service experience
-- Laundry service page
-- Cleaning service page
-- Fumigation & pest-control service page
-- Contact and service-area page
-- Privacy page
-- Accessible WhatsApp enquiry composer
-- Mobile WhatsApp / Call action bar
-- Responsive navigation, keyboard-accessible service tabs and reduced-motion support
-- 404 page and basic search files
+- Cinematic image-led homepage
+- Minimal luxury navigation
+- Clean Bubbles blue / cyan / pink visual system
+- Alternating light → dark → light scenes
+- Scroll-triggered reveal animations
+- Large service imagery
+- Laundry pickup CTA
+- Laundry, cleaning and fumigation service pages
+- Cleaning and fumigation price guides transcribed from the supplied Clean Bubbles materials
+- WhatsApp enquiry composer with review-before-send flow
+- Contact / service-area and privacy pages
+- Responsive mobile WhatsApp / pickup action bar
+- Custom 404 page
 
-Public prices remain quote-based until a current rate list is approved.
+## Pricing treatment
+
+The cleaning and fumigation figures shown on the website come from the supplied Clean Bubbles price materials.
+
+Laundry remains quote-based because no laundry rate list was supplied.
+
+The separate June discount and August fumigation promotion are not presented as current offers because the supplied materials did not establish current valid dates.
 
 ## Main contact
 
@@ -28,11 +37,10 @@ Public prices remain quote-based until a current rate list is approved.
 
 ## Local preview
 
-No build step is required.
-
-From the project folder, run:
+From the project folder:
 
 ```powershell
+git pull origin main
 python -m http.server 5500
 ```
 
@@ -42,22 +50,6 @@ Then open:
 http://localhost:5500
 ```
 
-## Structure
-
-```text
-/
-├── index.html
-├── laundry/
-├── cleaning/
-├── fumigation/
-├── contact/
-├── privacy/
-├── assets/css/styles.css
-├── assets/js/main.js
-├── assets/js/enquiry.js
-└── 404.html
-```
-
 ## Before public launch
 
-The final domain, canonical URLs, final sitemap URLs, approved logo/business imagery, current prices (if any), and owner-approved public content still need launch review.
+Review the latest local preview on desktop and mobile, confirm all visible prices are still current, replace or approve any final business photography as needed, connect the final domain, update canonical sitemap URLs, and complete launch testing.
