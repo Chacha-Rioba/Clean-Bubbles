@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071F58">
   <meta name="description" content="Clean Bubbles provides laundry, cleaning and fumigation services in Thika and surrounding areas. Request a quote or pickup through WhatsApp.">
   <title>Clean Bubbles | Laundry, Cleaning & Fumigation in Thika</title>
   <link rel="stylesheet" href="assets/css/styles.css">
@@ -15,20 +16,27 @@
   <header class="site-header">
     <div class="container nav-shell">
       <a class="wordmark" href="./" aria-label="Clean Bubbles home">
-        <span class="wordmark-mark" aria-hidden="true">CB</span>
-        <span>Clean Bubbles</span>
+        <span class="wordmark-mark" aria-hidden="true">
+          <span class="mark-bubble mark-bubble-one"></span>
+          <span class="mark-bubble mark-bubble-two"></span>
+          <span class="mark-wave"></span>
+        </span>
+        <span class="wordmark-copy"><strong>Clean Bubbles</strong><small>Laundry · Cleaning · Fumigation</small></span>
       </a>
 
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        <span>Menu</span>
+        <span class="menu-lines" aria-hidden="true"></span>
+      </button>
 
       <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
         <a class="active" href="./">Home</a>
         <div class="nav-dropdown">
           <button class="nav-drop-toggle" type="button" aria-expanded="false">Services</button>
           <div class="nav-dropdown-menu">
-            <a href="laundry/">Laundry</a>
-            <a href="cleaning/">Cleaning</a>
-            <a href="fumigation/">Fumigation</a>
+            <a href="laundry/"><span>Laundry</span><small>Garments, bedding & shoes</small></a>
+            <a href="cleaning/"><span>Cleaning</span><small>Homes, offices & upholstery</small></a>
+            <a href="fumigation/"><span>Fumigation</span><small>Pest-control enquiries</small></a>
           </div>
         </div>
         <a href="contact/#areas">Service areas</a>
@@ -38,123 +46,234 @@
   </header>
 
   <main id="main">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Laundry · Cleaning · Fumigation</p>
-          <h1>Fresh laundry. More time for you.</h1>
-          <p class="hero-lede">Clean Bubbles helps homes and businesses in Thika and surrounding areas with laundry care, professional cleaning and pest-control enquiries.</p>
+    <section class="hero hero-experience">
+      <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
 
-          <div class="hero-actions">
-            <button class="btn btn-primary" type="button" data-enquiry data-category="laundry" data-service="Wash, dry and fold">Request a pickup</button>
+      <div class="container hero-grid">
+        <div class="hero-copy hero-sequence">
+          <div class="availability-pill hero-step">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            Serving Thika & surrounding areas
+          </div>
+
+          <p class="eyebrow hero-step">Laundry · Cleaning · Fumigation</p>
+          <h1 class="hero-step">Fresh laundry.<br><span class="headline-accent">More time for you.</span></h1>
+          <p class="hero-lede hero-step">Clean Bubbles helps homes and businesses care for clothes, fabrics and spaces — with simple WhatsApp enquiries and arrangements confirmed by the team.</p>
+
+          <div class="hero-actions hero-step">
+            <button class="btn btn-primary btn-icon" type="button" data-enquiry data-category="laundry" data-service="Wash, dry and fold">
+              Request a pickup <span aria-hidden="true">→</span>
+            </button>
             <a class="btn btn-secondary" href="#services">Explore services</a>
           </div>
 
-          <div class="hero-contact">
-            <span>Prefer to call?</span>
-            <a href="tel:+254723791323">0723 791 323</a>
+          <div class="hero-assurance hero-step" aria-label="Website enquiry features">
+            <span><i aria-hidden="true">✓</i>No account needed</span>
+            <span><i aria-hidden="true">✓</i>Review before sending</span>
+            <span><i aria-hidden="true">✓</i>Quote confirmed in chat</span>
           </div>
         </div>
 
-        <div class="hero-art reveal" aria-label="Decorative laundry illustration">
-          <div class="bubble bubble-a"></div>
-          <div class="bubble bubble-b"></div>
-          <div class="bubble bubble-c"></div>
-          <div class="washer">
-            <div class="washer-top"><span></span><span></span><span></span></div>
-            <div class="washer-door">
-              <div class="washer-water"></div>
-              <div class="washer-cloth cloth-one"></div>
-              <div class="washer-cloth cloth-two"></div>
+        <div class="experience-stage hero-step" data-parallax-stage aria-label="Decorative laundry experience">
+          <div class="stage-orbit orbit-one" aria-hidden="true"></div>
+          <div class="stage-orbit orbit-two" aria-hidden="true"></div>
+
+          <div class="floating-note note-top">
+            <span class="note-icon" aria-hidden="true">✦</span>
+            <span><strong>Care first</strong><small>Tell us the item & concern</small></span>
+          </div>
+
+          <div class="washer-shell" data-parallax-item="6">
+            <div class="washer-panel">
+              <span class="washer-brand-dot"></span>
+              <span class="washer-control"></span>
+              <span class="washer-control washer-control-muted"></span>
             </div>
+            <div class="washer-window">
+              <div class="wash-reflection"></div>
+              <div class="wash-wave wave-one"></div>
+              <div class="wash-wave wave-two"></div>
+              <div class="wash-fabric fabric-pink"></div>
+              <div class="wash-fabric fabric-white"></div>
+              <div class="wash-fabric fabric-blue"></div>
+            </div>
+            <div class="washer-shadow"></div>
           </div>
-          <div class="laundry-card">
-            <strong>Pickup & delivery</strong>
-            <span>Arrangements confirmed on WhatsApp</span>
+
+          <div class="floating-note note-bottom" data-parallax-item="-5">
+            <span class="note-icon note-icon-pink" aria-hidden="true">↗</span>
+            <span><strong>Pickup & delivery</strong><small>Arrangements confirmed on WhatsApp</small></span>
           </div>
+
+          <div class="stage-bubble stage-bubble-a" aria-hidden="true"></div>
+          <div class="stage-bubble stage-bubble-b" aria-hidden="true"></div>
+          <div class="stage-bubble stage-bubble-c" aria-hidden="true"></div>
         </div>
+      </div>
+
+      <div class="container hero-service-rail hero-step" aria-label="Featured service categories">
+        <a href="laundry/">
+          <span class="rail-index">01</span>
+          <span><strong>Laundry care</strong><small>Wash, dry, fold, ironing & more</small></span>
+          <span aria-hidden="true">↗</span>
+        </a>
+        <a href="cleaning/">
+          <span class="rail-index">02</span>
+          <span><strong>Professional cleaning</strong><small>Sofas, homes, offices & fabrics</small></span>
+          <span aria-hidden="true">↗</span>
+        </a>
+        <a href="fumigation/">
+          <span class="rail-index">03</span>
+          <span><strong>Fumigation</strong><small>Pest-control & treatment enquiries</small></span>
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
     </section>
 
     <section id="services" class="section service-switcher">
       <div class="container">
         <div class="section-heading reveal">
-          <p class="eyebrow">What we can help with</p>
-          <h2>One team, three service categories.</h2>
-          <p>Choose a category to see common requests, then open the full service page or prepare a WhatsApp enquiry.</p>
+          <p class="eyebrow">Choose your service</p>
+          <h2>Cleaning, simplified around what you need.</h2>
+          <p>Start with a category. We’ll only ask for the details that help the team understand your request and prepare the next conversation.</p>
         </div>
 
-        <div class="tabs reveal" data-tabs>
+        <div class="tabs experience-tabs reveal" data-tabs>
           <div class="tab-list" role="tablist" aria-label="Service categories">
-            <button role="tab" aria-selected="true" aria-controls="panel-laundry" id="tab-laundry" data-tab="laundry">Laundry</button>
-            <button role="tab" aria-selected="false" aria-controls="panel-cleaning" id="tab-cleaning" data-tab="cleaning">Cleaning</button>
-            <button role="tab" aria-selected="false" aria-controls="panel-fumigation" id="tab-fumigation" data-tab="fumigation">Fumigation</button>
+            <button role="tab" aria-selected="true" aria-controls="panel-laundry" id="tab-laundry" data-tab="laundry">
+              <span class="tab-number">01</span> Laundry
+            </button>
+            <button role="tab" aria-selected="false" aria-controls="panel-cleaning" id="tab-cleaning" data-tab="cleaning">
+              <span class="tab-number">02</span> Cleaning
+            </button>
+            <button role="tab" aria-selected="false" aria-controls="panel-fumigation" id="tab-fumigation" data-tab="fumigation">
+              <span class="tab-number">03</span> Fumigation
+            </button>
           </div>
 
           <div class="tab-panel is-active" id="panel-laundry" role="tabpanel" aria-labelledby="tab-laundry" data-panel="laundry">
-            <div>
+            <div class="tab-copy">
               <p class="eyebrow">Laundry care</p>
-              <h3>Everyday laundry, household textiles and shoe care.</h3>
+              <h3>Everyday clothes to the fabrics that make home feel like home.</h3>
               <p>Ask about wash, dry and fold, ironing, stain removal, dry cleaning, duvets or covers, curtains, carpets, mattresses and shoe cleaning.</p>
+              <div class="service-tags" aria-label="Laundry examples">
+                <span>Wash & fold</span><span>Ironing</span><span>Duvets</span><span>Shoes</span>
+              </div>
               <div class="inline-actions">
-                <a class="text-link" href="laundry/">View laundry services</a>
+                <a class="text-link" href="laundry/">View laundry services <span aria-hidden="true">↗</span></a>
                 <button class="btn btn-primary" type="button" data-enquiry data-category="laundry">Request a quote</button>
               </div>
             </div>
-            <div class="service-visual visual-laundry" aria-hidden="true"><span class="fold fold-1"></span><span class="fold fold-2"></span><span class="fold fold-3"></span></div>
+            <div class="editorial-visual laundry-editorial" aria-hidden="true">
+              <div class="editorial-label">Laundry care</div>
+              <div class="towel-stack">
+                <span class="towel towel-a"></span>
+                <span class="towel towel-b"></span>
+                <span class="towel towel-c"></span>
+                <span class="towel towel-d"></span>
+              </div>
+              <span class="editorial-bubble eb-one"></span>
+              <span class="editorial-bubble eb-two"></span>
+            </div>
           </div>
 
           <div class="tab-panel" id="panel-cleaning" role="tabpanel" aria-labelledby="tab-cleaning" data-panel="cleaning" hidden>
-            <div>
+            <div class="tab-copy">
               <p class="eyebrow">Professional cleaning</p>
-              <h3>From sofas and mattresses to homes and offices.</h3>
-              <p>Describe your space, item count or approximate size so the team can confirm scope and pricing.</p>
+              <h3>Give your furniture, rooms and workspaces a reset.</h3>
+              <p>Describe your space, item count or approximate size so the team can confirm the scope and current pricing.</p>
+              <div class="service-tags" aria-label="Cleaning examples">
+                <span>Sofas</span><span>Mattresses</span><span>Deep cleaning</span><span>Offices</span>
+              </div>
               <div class="inline-actions">
-                <a class="text-link" href="cleaning/">View cleaning services</a>
+                <a class="text-link" href="cleaning/">View cleaning services <span aria-hidden="true">↗</span></a>
                 <button class="btn btn-primary" type="button" data-enquiry data-category="cleaning">Request a quote</button>
               </div>
             </div>
-            <div class="service-visual visual-cleaning" aria-hidden="true"><span class="sofa"></span><span class="sparkle s1"></span><span class="sparkle s2"></span></div>
+            <div class="editorial-visual cleaning-editorial" aria-hidden="true">
+              <div class="editorial-label">Space care</div>
+              <div class="room-wall"></div>
+              <div class="sofa-premium"><span></span><span></span></div>
+              <div class="floor-orb"></div>
+              <span class="sparkle-premium sp-one">✦</span>
+              <span class="sparkle-premium sp-two">✦</span>
+            </div>
           </div>
 
           <div class="tab-panel" id="panel-fumigation" role="tabpanel" aria-labelledby="tab-fumigation" data-panel="fumigation" hidden>
-            <div>
+            <div class="tab-copy">
               <p class="eyebrow">Fumigation & pest control</p>
-              <h3>Tell us what you are seeing — or choose “Not sure”.</h3>
+              <h3>You don’t have to diagnose the problem before asking for help.</h3>
               <p>Enquire about cockroaches, bed bugs, termites, rats or mice, ants, general pest control, disinfection, sanitization or fogging.</p>
+              <div class="service-tags" aria-label="Pest-control examples">
+                <span>Cockroaches</span><span>Bed bugs</span><span>Termites</span><span>Not sure</span>
+              </div>
               <div class="inline-actions">
-                <a class="text-link" href="fumigation/">View pest-control services</a>
+                <a class="text-link" href="fumigation/">View pest-control services <span aria-hidden="true">↗</span></a>
                 <button class="btn btn-primary" type="button" data-enquiry data-category="fumigation">Request a pest-control quote</button>
               </div>
             </div>
-            <div class="service-visual visual-fumigation" aria-hidden="true"><span class="shield"></span><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span></div>
+            <div class="editorial-visual pest-editorial" aria-hidden="true">
+              <div class="editorial-label">Pest enquiry</div>
+              <div class="shield-premium"><span>✓</span></div>
+              <span class="pest-dot pd-one"></span>
+              <span class="pest-dot pd-two"></span>
+              <span class="pest-dot pd-three"></span>
+              <div class="shield-ring"></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="section care-section">
+      <div class="care-noise" aria-hidden="true"></div>
       <div class="container care-grid">
         <div class="care-copy reveal">
           <p class="eyebrow eyebrow-light">Thoughtful care</p>
           <h2>Care for the things you live in.</h2>
           <p>From daily clothes to household fabrics and the spaces around them, tell us what needs attention and the team will confirm suitable care, pricing and arrangements.</p>
-          <button class="btn btn-light" type="button" data-enquiry>Start an enquiry</button>
+          <button class="btn btn-light btn-icon" type="button" data-enquiry>Start an enquiry <span aria-hidden="true">→</span></button>
         </div>
-        <div class="fabric-art reveal" aria-hidden="true"><div class="fabric fabric-one"></div><div class="fabric fabric-two"></div><div class="fabric fabric-three"></div></div>
+
+        <div class="fabric-art premium-fabric reveal" aria-hidden="true">
+          <div class="fabric fabric-one"><span></span></div>
+          <div class="fabric fabric-two"><span></span></div>
+          <div class="fabric fabric-three"><span></span></div>
+          <div class="fabric-caption">Care, without the clutter.</div>
+        </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section process-section">
       <div class="container">
         <div class="section-heading reveal">
           <p class="eyebrow">How it works</p>
-          <h2>Simple from first message to confirmed service.</h2>
+          <h2>Three steps. One simple conversation.</h2>
+          <p>The website helps you prepare the request. Clean Bubbles confirms the actual service arrangements with you on WhatsApp.</p>
         </div>
+
+        <div class="process-line" aria-hidden="true"></div>
         <div class="steps">
-          <article class="step-card reveal"><span>01</span><h3>Tell us what you need</h3><p>Choose a service, your area and a short description of the items, space or pest concern.</p></article>
-          <article class="step-card reveal"><span>02</span><h3>Confirm on WhatsApp</h3><p>Review the prepared message. The team confirms availability, scope, price and arrangements in chat.</p></article>
-          <article class="step-card reveal"><span>03</span><h3>Receive the agreed service</h3><p>Pickup, delivery or on-site details follow the arrangements confirmed with the team.</p></article>
+          <article class="step-card reveal">
+            <span class="step-number">01</span>
+            <div class="step-symbol" aria-hidden="true">＋</div>
+            <h3>Tell us what you need</h3>
+            <p>Choose a service, your area and a short description of the items, space or pest concern.</p>
+          </article>
+          <article class="step-card reveal">
+            <span class="step-number">02</span>
+            <div class="step-symbol" aria-hidden="true">↗</div>
+            <h3>Confirm on WhatsApp</h3>
+            <p>Review your prepared message. The team confirms availability, scope, price and arrangements in chat.</p>
+          </article>
+          <article class="step-card reveal">
+            <span class="step-number">03</span>
+            <div class="step-symbol" aria-hidden="true">✓</div>
+            <h3>Receive the agreed service</h3>
+            <p>Pickup, delivery or on-site details follow the arrangements confirmed directly with the team.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -163,41 +282,61 @@
       <div class="container area-grid">
         <div class="reveal">
           <p class="eyebrow">Service areas</p>
-          <h2>Based in Thika, serving surrounding areas.</h2>
-          <p>For Nairobi, ask us about availability. Coverage, pickup fees and any minimum order are confirmed by the team before booking.</p>
+          <h2>Thika first.<br><span class="headline-accent">Ask us about Nairobi.</span></h2>
+          <p>Thika and surrounding areas are the primary service coverage. Nairobi availability is confirmed by enquiry rather than assumed.</p>
         </div>
         <div class="area-card reveal">
+          <div class="area-icon" aria-hidden="true">⌖</div>
           <strong>Not sure whether we cover your area?</strong>
-          <p>Send your neighbourhood and the service you need.</p>
-          <button class="btn btn-primary" type="button" data-enquiry data-focus-area="true">Check my area</button>
+          <p>Send your neighbourhood and the service you need. The team will confirm coverage and any applicable arrangements.</p>
+          <button class="btn btn-primary btn-icon" type="button" data-enquiry data-focus-area="true">Check my area <span aria-hidden="true">→</span></button>
         </div>
       </div>
     </section>
 
     <section class="section faq-section">
-      <div class="container">
+      <div class="container faq-grid">
         <div class="section-heading reveal">
           <p class="eyebrow">FAQs</p>
-          <h2>Before you send a request.</h2>
+          <h2>A few things worth knowing.</h2>
+          <p>For current prices, turnaround, fees and availability, the team confirms the details with you before booking.</p>
+          <a class="text-link" href="contact/">Contact Clean Bubbles <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="faq-list">
-          <details><summary>How do I request laundry pickup?</summary><p>Choose a laundry service and share your area, item details and preferred date. The team confirms whether pickup is available and the final arrangements on WhatsApp.</p></details>
-          <details><summary>How much does a service cost?</summary><p>Public pricing is quote-based at this stage. Send the service details you need and the team will confirm the current price before booking.</p></details>
-          <details><summary>How long does a service take?</summary><p>Turnaround depends on the service and job details. Confirm the expected timing with the team before booking.</p></details>
-          <details><summary>What information helps with a cleaning quote?</summary><p>Property type, number of rooms or seats where relevant, approximate carpet area if known, location and a short description of the job.</p></details>
-          <details><summary>What if I am not sure which pest I have?</summary><p>You can choose “Not sure” in the enquiry and describe what you are seeing. The website does not make treatment recommendations automatically.</p></details>
+
+        <div class="faq-list reveal">
+          <details>
+            <summary>How do I request laundry pickup?<span aria-hidden="true">＋</span></summary>
+            <p>Choose a laundry service and share your area, item details and preferred date. The team confirms whether pickup is available and the final arrangements on WhatsApp.</p>
+          </details>
+          <details>
+            <summary>How much does a service cost?<span aria-hidden="true">＋</span></summary>
+            <p>Public pricing is quote-based at this stage. Send the service details you need and the team will confirm the current price before booking.</p>
+          </details>
+          <details>
+            <summary>How long does a service take?<span aria-hidden="true">＋</span></summary>
+            <p>Turnaround depends on the service and job details. Confirm the expected timing with the team before booking.</p>
+          </details>
+          <details>
+            <summary>What helps with a cleaning quote?<span aria-hidden="true">＋</span></summary>
+            <p>Property type, number of rooms or seats where relevant, approximate carpet area if known, location and a short description of the job.</p>
+          </details>
+          <details>
+            <summary>What if I am not sure which pest I have?<span aria-hidden="true">＋</span></summary>
+            <p>Choose “Not sure” in the enquiry and describe what you are seeing. The website does not make treatment recommendations automatically.</p>
+          </details>
         </div>
       </div>
     </section>
 
     <section class="section final-cta">
       <div class="container cta-panel reveal">
+        <div class="cta-orb" aria-hidden="true"></div>
         <div>
-          <p class="eyebrow eyebrow-light">Clean Bubbles</p>
+          <p class="eyebrow eyebrow-light">Ready when you are</p>
           <h2>Let us help with the cleaning.</h2>
-          <p>Prepare a service enquiry, review it, then continue to WhatsApp when you are ready.</p>
+          <p>Prepare the details now, review your message, then continue to WhatsApp when you’re ready.</p>
         </div>
-        <button class="btn btn-light" type="button" data-enquiry>Start an enquiry</button>
+        <button class="btn btn-light btn-icon" type="button" data-enquiry>Start an enquiry <span aria-hidden="true">→</span></button>
       </div>
     </section>
   </main>
@@ -205,8 +344,11 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <a class="wordmark wordmark-light" href="./"><span class="wordmark-mark">CB</span><span>Clean Bubbles</span></a>
-        <p>Laundry, Cleaning & Fumigation Services.</p>
+        <a class="wordmark wordmark-light" href="./">
+          <span class="wordmark-mark" aria-hidden="true"><span class="mark-bubble mark-bubble-one"></span><span class="mark-bubble mark-bubble-two"></span><span class="mark-wave"></span></span>
+          <span class="wordmark-copy"><strong>Clean Bubbles</strong><small>Laundry · Cleaning · Fumigation</small></span>
+        </a>
+        <p>Service enquiries for Thika and surrounding areas.</p>
       </div>
       <div><h2>Services</h2><a href="laundry/">Laundry</a><a href="cleaning/">Cleaning</a><a href="fumigation/">Fumigation</a></div>
       <div><h2>Contact</h2><a href="tel:+254723791323">0723 791 323</a><a href="tel:+254720658649">0720 658 649</a><a href="https://wa.me/254723791323" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
