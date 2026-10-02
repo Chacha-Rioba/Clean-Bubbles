@@ -490,3 +490,116 @@ h3{font-size:clamp(1.7rem,3.1vw,2.7rem);color:var(--navy);font-weight:900}
   box-shadow:inset -3px -3px 0 -1px currentColor;
 }
 .logo-lockup img{background:#fff;border-radius:10px}
+
+
+/* Laundry page premium refinements */
+.laundry-action-hero{
+  position:relative;
+  min-height:500px;
+}
+.laundry-action-hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,transparent 58%,rgba(4,20,56,.16));
+}
+.laundry-action-hero img{
+  object-position:center center;
+}
+.laundry-highlight-strip{
+  padding:22px 0 10px;
+  background:linear-gradient(180deg,#fbfdff 0%,#fff 100%);
+}
+.laundry-highlight-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.laundry-highlight-card{
+  position:relative;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:14px;
+  align-items:start;
+  min-height:150px;
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:#fff;
+  box-shadow:0 12px 32px rgba(7,31,88,.055);
+  overflow:hidden;
+}
+.laundry-highlight-card:before{
+  content:"";
+  position:absolute;
+  width:110px;
+  height:110px;
+  right:-55px;
+  top:-55px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(22,185,232,.14),transparent 72%);
+}
+.laundry-highlight-card-accent{
+  background:linear-gradient(145deg,#071F58 0%,#0A4C95 100%);
+  border-color:rgba(7,31,88,.9);
+  color:#fff;
+  padding-right:64px;
+}
+.laundry-highlight-number{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--cyan),var(--blue));
+  color:#fff;
+  font-size:.72rem;
+  font-weight:950;
+  box-shadow:0 8px 22px rgba(7,88,184,.16);
+}
+.laundry-highlight-card-accent .laundry-highlight-number{
+  background:linear-gradient(135deg,var(--pink),#ff5aa7);
+}
+.laundry-highlight-card h3{
+  font-size:1.14rem;
+  letter-spacing:-.025em;
+  margin:3px 0 7px;
+}
+.laundry-highlight-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:.88rem;
+  line-height:1.5;
+}
+.laundry-highlight-card-accent h3,
+.laundry-highlight-card-accent p{
+  color:#fff;
+}
+.laundry-highlight-card-accent p{
+  color:#d9e8f8;
+}
+.highlight-arrow{
+  position:absolute;
+  right:18px;
+  bottom:18px;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#fff;
+  color:var(--navy);
+  font-size:1.15rem;
+  font-weight:900;
+}
+@media(max-width:980px){
+  .laundry-highlight-grid{grid-template-columns:1fr}
+  .laundry-highlight-card{min-height:0}
+}
+@media(max-width:640px){
+  .laundry-highlight-strip{padding-top:16px}
+  .laundry-action-hero,
+  .laundry-action-hero img{min-height:340px}
+}
