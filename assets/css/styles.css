@@ -365,7 +365,7 @@ h3{font-size:clamp(1.55rem,2.6vw,2.35rem)}
 .form-field input,.form-field select,.form-field textarea{width:100%;border:1px solid var(--border);border-radius:14px;padding:13px 14px;color:var(--text);background:#fff;min-height:48px}
 .form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(7,88,184,.08)}
 .form-field textarea{min-height:132px;resize:vertical}
-.form-error{color:#A50048;font-size:.86rem;min-height:1.1em}
+.form-error{color:#A50048;font-size:.86rem;min-height:1.1em}\n.form-context{margin:10px 0 0;color:var(--muted);font-size:.82rem;min-height:1.2em}
 .review-box{white-space:pre-wrap;background:var(--pale);border-radius:18px;padding:18px;color:var(--text);margin:18px 0}
 .modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
 
